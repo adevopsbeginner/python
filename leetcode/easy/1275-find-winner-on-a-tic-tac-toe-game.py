@@ -62,6 +62,7 @@ class Solution:
     def leetcode(self, moves: List[List[int]]) -> str:
         matrix = [[0,0,0], [0,0,0], [0,0,0]]
         ll = len(moves)
+        
         for ii in range(ll):
             rr,cc = moves[ii]
             if ii%2 == 0:
@@ -89,7 +90,10 @@ class Solution:
                 if matrix[1][1] == -1:
                     return "B"
 
-        return "Draw"
+        if ll >= 9:
+            return "Draw"
+            
+        return "Pending"
 
 
 if __name__ == "__main__":
