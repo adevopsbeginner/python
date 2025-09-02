@@ -1,0 +1,66 @@
+"""
+2848. Points That Intersect With Cars
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You are given a 0-indexed 2D integer array nums representing the coordinates of the cars parking on a number line. For any index i, nums[i] = [starti, endi] where starti is the starting point of the ith car and endi is the ending point of the ith car.
+
+Return the number of integer points on the line that are covered with any part of a car.
+
+ 
+
+Example 1:
+
+Input: nums = [[3,6],[1,5],[4,7]]
+Output: 7
+Explanation: All the points from 1 to 7 intersect at least one car, therefore the answer would be 7.
+Example 2:
+
+Input: nums = [[1,3],[5,8]]
+Output: 7
+Explanation: Points intersecting at least one car are 1, 2, 3, 5, 6, 7, 8. There are a total of 7 points, therefore the answer would be 7.
+ 
+
+Constraints:
+
+1 <= nums.length <= 100
+nums[i].length == 2
+1 <= starti <= endi <= 100
+"""
+
+import string
+import heapq
+from typing import List
+from collections import defaultdict
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def leetcode(self, nums: List[List[int]]) -> int:
+        maxn = 102
+        result = maxn
+        end = 0
+        nums.sort()
+        for ss, ee in nums:
+            print(ss,ee,result)
+            if ee <= end:
+                continue
+            if ss > end:
+                result -= (ss-end)-1
+            end = ee
+
+        result -= (maxn-end)
+
+        return result
+
+
+if __name__ == "__main__":
+    app = Solution()
+    a = [4,5,0,2,3,1]
+    print(app.leetcode(a))
