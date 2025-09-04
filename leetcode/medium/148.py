@@ -47,6 +47,34 @@ class ListNode:
 
 class Solution:
     def leetcode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        ### 20250904
+        if head == None:
+            return head
+
+        q = [[head.val, 0, head]]
+
+        ### while with same val, heapq does not compare ListNode
+        count = 1
+        
+        heapq.heapify(q)
+        index = head.next
+        while index:
+            heapq.heappush(q, [index.val, count, index])
+            index = index.next
+            count += 1
+
+        ll = len(q)
+        _, _, result = heapq.heappop(q)
+        index = result
+        result.next = None
+        for ii in range(ll-1):
+            _, _, index.next = heappop(q)
+            index = index.next
+            index.next = None
+
+        return result
+
+        ### time limit exceeded
         if head == None:
             return head
         p = head
