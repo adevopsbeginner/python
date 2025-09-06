@@ -53,7 +53,7 @@ class Solution:
             i5=5**i
             if n<i5:
                 break
-            sum += n/i5
+            sum += n//i5
         return sum
 
 
