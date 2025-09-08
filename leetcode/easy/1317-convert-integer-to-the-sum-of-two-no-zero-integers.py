@@ -48,37 +48,33 @@ class ListNode:
 class Solution:
     def leetcode(self, n: int) -> List[int]:
         if n <= 10:
-            return [1,n-1]
+            return [1, n-1]
+
         nn = n
         a = 0
-        high = 0
-        borrow = 0
-        al = []
+        borrow_flag = 0
+        alist = []
         while nn >= 10:
-            al.append(1)
+            alist.append(1)
             if nn%10 == 0:
-                borrow = 1
+                borrow_flag = 1
             elif nn%10 == 1:
-                print(nn,a,borrow)
-                if borrow == 0:
-                    al[-1] += 1
-                    borrow = 1
+                if borrow_flag == 0:
+                    borrow_flag = 1
+                    alist[-1] += 1
             elif nn%10 == 2:
-                if borrow == 1:
-                    al[-1] += 1
-                    borrow = 1
+                if borrow_flag == 1:
+                    borrow_flag = 1
+                    alist[-1] += 1
             else:
-                borrow = 0
-
+                borrow_flag = 0
+            
             nn //= 10
 
-        #print(al)
-        while al:
-            a = a*10+al.pop()
+        while alist:
+            a = a*10 + alist.pop()
 
-        b = n-a
-
-        return [a,b]
+        return [a, n-a]
 
 
 if __name__ == "__main__":
