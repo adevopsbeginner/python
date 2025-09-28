@@ -42,6 +42,22 @@ class ListNode:
 
 class Solution:
     def leetcode(self, nums: List[int]) -> int:
+        ### 20250928
+        result = 0
+        ll = len(nums)
+        nums.sort(reverse=True)
+        for ii in range(ll):
+            for jj in range(ii+1, ll):
+                for kk in range(jj+1, ll):
+                    if nums[jj]+nums[kk] <= nums[ii]:
+                        break
+                    if nums[ii]+nums[jj]+nums[kk] > result:
+                        result = nums[ii]+nums[jj]+nums[kk]
+                        return result
+
+        return result
+
+        ### 20241014
         result = 0
         ll = len(nums)
         nums.sort(reverse=True)
