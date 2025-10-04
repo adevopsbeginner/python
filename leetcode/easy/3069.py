@@ -1,6 +1,5 @@
 """
 3069. Distribute Elements Into Two Arrays I
-Attempted
 Easy
 Topics
 premium lock icon
