@@ -48,12 +48,13 @@ class ListNode:
 class Solution:
     def leetcode(self, height: List[int]) -> int:
         n = len(height)
-        result = min(height[0], height[-1])*(n-1)
+        
+        result = 0
         left = 0
         right = n-1
+
         while left < right:
-            volume = min(height[left], height[right])*(right-left)
-            result = max(result, volume)
+            result= max(result, min(height[left], height[right])*(right-left))
 
             if height[left] < height[right]:
                 left += 1
