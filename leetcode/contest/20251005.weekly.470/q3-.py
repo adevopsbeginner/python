@@ -75,11 +75,40 @@ from typing import List
 from collections import defaultdict
 
 class Solution:
-    def leetcode(self, nums: List[int]) -> int:
-        ll = len(nums)
-        result = 0
+    def leetcode(self, s: str, k: int) -> str:
+        q = []
 
-        return result
+        for each in s:
+            #print(q)
+                    
+            if each == "(":
+                if len(q) > 0 and q[-1][0] == "(":
+                    q.append(("(", q[-1][1]+1))
+                else:
+                    q.append(("(", 1))
+            else:
+                if len(q) > 0 and q[-1][0] == ")":
+                    q.append((")", q[-1][1]+1))
+                else:
+                    q.append((")", 1))
+
+                if len(q) >= k*2:
+                    flag = 1
+                    for ii in range(k):
+                        if q[-1-ii][0] != ")" or q[-1-ii][1] < 1:
+                            flag = 0
+                            break
+                            
+                    for ii in range(k,k*2):
+                        if q[-1-ii][0] != "(" or q[-1-ii][1] < 1:
+                            flag = 0
+                            break
+
+                    if flag:
+                        for ii in range(k*2):
+                            q.pop()
+                    
+        return "".join(each for each,_ in q)
 
 if __name__ == "__main__":
     app = Solution()
