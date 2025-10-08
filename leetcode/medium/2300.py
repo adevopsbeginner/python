@@ -55,18 +55,15 @@ class ListNode:
 
 class Solution:
     def leetcode(self, spells: List[int], potions: List[int], success: int) -> List[int]:
-        ### chatgpt
         potions.sort()
-        n = len(potions)
-        ans = []
+        ll = len(potions)
+        result = []
 
-        for s in spells:
-            # minimum potion needed
-            min_potion = (success + s - 1) // s  # ceil(success / s)
-            idx = bisect_left(potions, min_potion)
-            ans.append(n - idx)
+        for each in spells:
+            index = bisect_left(potions, ((success-1)//each +1))
+            result.append(ll-index)
 
-        return ans
+        return result
 
         ### time limit exceeded
         m = len(spells)
