@@ -43,8 +43,6 @@ class ListNode:
 
 class Solution:
     def leetcode(self, nums: List[int], k: int) -> bool:
-        index0 = 0-k
-        index1 = 0-k
         count0 = k
         ll = len(nums)
         for ii in range(ll):
