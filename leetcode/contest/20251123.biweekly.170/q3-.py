@@ -56,15 +56,33 @@ There are no arrays that sum to 10000000000 and whose absolute values form a per
 Constraints:
 
 1 <= n <= 105
--1010 <= target <= 1010©leetcode
+-1010 <= target <= 1010
 """
 
 from typing import List
 from collections import defaultdict
 
 class Solution:
-    def leetcode(self, nums: List[int]) -> int:
-        ll = len(nums)
-        result = 0
+    def leetcode(self, n: int, target: int) -> List[int]:
+        sumn = n*(n+1)//2
+        if sumn < abs(target):
+            return []
+        result = [ii for ii in range(n,0,-1)]
+        for ii in range(n):
+            #print(ii, sumn, target)
+            if sumn == target:
+                break
+
+            if sumn > target and sumn-2 < target:
+                return []
+
+            if sumn-result[ii]*2 >= target:
+                sumn -= result[ii]*2
+                result[ii] *= -1
+
+            if ii == n-1 and sumn != target:
+                return []
+
+        result.sort()
 
         return result
