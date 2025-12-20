@@ -66,22 +66,13 @@ class ListNode:
 
 class Solution:
     def leetcode(self, strs: List[str]) -> int:
-        rr = len(strs)
-        cc = len(strs[0])
+        r = len(strs)
+        c = len(strs[0])
         result = 0
-        for c in range(cc):
-            flag = 0
-            for r in range(1,rr):
-                if ord(strs[r][c]) < ord(strs[r-1][c]):
-                    flag = 1
+        for cc in range(c):
+            for rr in range(1,r):
+                if ord(strs[rr][cc]) < ord(strs[rr-1][cc]):
+                    result += 1
                     break
-            if flag == 1:
-                result += 1
 
         return result
-
-
-if __name__ == "__main__":
-    app = Solution()
-    a = [4,5,0,2,3,1]
-    print(app.leetcode(a))
