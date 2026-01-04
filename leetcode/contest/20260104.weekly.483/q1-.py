@@ -52,8 +52,10 @@ from typing import List
 from collections import defaultdict
 
 class Solution:
-    def leetcode(self, nums: List[int]) -> int:
-        ll = len(nums)
-        result = 0
-
-        return result
+    def leetcode(self, s: str) -> str:
+        ll = len(s)
+        for ii in range(ll-1,-1,-1):
+            if s[ii] == "2":
+                return s[:ii+1]
+                
+        return ""
