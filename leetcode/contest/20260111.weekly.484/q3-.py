@@ -58,8 +58,30 @@ from typing import List
 from collections import defaultdict
 
 class Solution:
-    def leetcode(self, nums: List[int]) -> int:
-        ll = len(nums)
-        result = 0
+    def leetcode(self, words: List[str]) -> int:
+        ll = len(words)
+        m = len(words[0])
+        for ii in range(ll):
+            arithmatic_sequence = [0]*m
+            for jj in range(1,m):
+                arithmatic_sequence[jj] = (ord(words[ii][jj]) - ord(words[ii][jj-1])+26)%26
 
+            words[ii] = arithmatic_sequence
+
+        words.sort()
+        result = 0
+        count = 1
+        for ii in range(1,ll):
+            similar = 1
+            for jj in range(m):
+                if words[ii][jj] != words[ii-1][jj]:
+                    similar = 0
+            if similar:
+                count += 1
+            else:
+                result += count*(count-1)//2
+                count = 1
+
+        result += count*(count-1)//2
+                
         return result
