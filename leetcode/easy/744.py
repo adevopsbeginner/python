@@ -49,21 +49,8 @@ class ListNode:
 
 class Solution:
     def leetcode(self, letters: List[str], target: str) -> str:
-        dd = defaultdict(int)
-        index = 0
-        for each in "abcdefghijklmnopqrstuvwxyz":
-            dd[each] = index
-            index += 1
-        itarget = dd[target]
         for each in letters:
-            # print(each,target, dd[each])
-            if dd[each] > itarget:
+            if each > target:
                 return each
 
         return letters[0]
-
-
-if __name__ == "__main__":
-    app = Solution()
-    a = [4,5,0,2,3,1]
-    print(app.leetcode(a))
