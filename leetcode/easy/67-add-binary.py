@@ -35,6 +35,27 @@ class ListNode:
 
 class Solution:
     def leetcode(self, a: str, b: str) -> str:
+        inta = 0
+        intb = 0
+        for each in a:
+            inta = inta*2 + int(each)
+        for each in b:
+            intb = intb*2 + int(each)
+
+        ab = inta + intb
+        if ab == 0:
+            return "0"
+            
+        result = ""
+        while ab:
+            if ab%2 == 1:
+                result = "1"+result
+            else:
+                result = "0"+result
+            ab //= 2
+
+        return result
+
         result = ""
         lla = len(a)
         llb = len(b)
@@ -66,10 +87,3 @@ class Solution:
             result = c+result
         
         return result
-
-if __name__ == "__main__":
-    app = Solution()
-    a = [1,3,5,6]
-    a = "1010"
-    b = "1011"
-    print(app.leetcode(a,b))
